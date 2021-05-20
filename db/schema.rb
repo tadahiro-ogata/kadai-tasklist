@@ -10,11 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 2021_05_19_052605) do
-=======
 ActiveRecord::Schema.define(version: 2021_05_17_043423) do
->>>>>>> 233b73be775fddbe479d442da7bdde594450fdd9
 
   create_table "tasks", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "content"
@@ -33,8 +30,5 @@ ActiveRecord::Schema.define(version: 2021_05_17_043423) do
     t.datetime "updated_at", null: false
   end
 
-<<<<<<< HEAD
   add_foreign_key "tasks", "users"
-=======
->>>>>>> 233b73be775fddbe479d442da7bdde594450fdd9
-end
+

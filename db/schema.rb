@@ -12,7 +12,6 @@
 
 ActiveRecord::Schema.define(version: 2021_05_19_052605) do
 
-
   create_table "tasks", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "content"
     t.datetime "created_at", null: false
@@ -29,6 +28,5 @@ ActiveRecord::Schema.define(version: 2021_05_19_052605) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
-end
-  
 
+end

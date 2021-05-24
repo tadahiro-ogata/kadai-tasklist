@@ -5,16 +5,14 @@
         <img class="mr-2 rounded" src="<%= gravatar_url(user, { size: 50 }) %>" alt="">
         <div class="media-body">
           <div>
-            <%= link_to task.user.name, user_path(task.user) %> <span class="text-muted">posted at <%= task.created_at %></span>
+            <%= user.name %>
           </div>
-          <div>
-            <p><%= task.content %></p>
-            
-          </div>
+          <!--<div>-->
+          <!--  <p><%= link_to 'View profile', users_path(user) %></p>-->
+          <!--</div>-->
         </div>
       </li>
     <% end %>
-    <%= paginate users %>
   </ul>
-  
+  <%= paginate users %>
 <% end %>

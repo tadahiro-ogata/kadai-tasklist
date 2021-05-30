@@ -1,11 +1,10 @@
-class TasksController < ApplicationController
-    before_action :require_user_logged_in
-    before_action :correct_user, only: [:destroy]
-    before_action :set_task, only: [ :show, :edit, :update, :destroy ]
-    
-    
+class TasksController <ApplicationController
+  before_action :require_user_logged_in
+  before_action :set_task, only: [:show, :edit, :update, :destroy]
+  before_action :correct_user, only: [:create, :destroy]
+  
     def index
-       @tasks = Task.all
+      @tasks = Task.all
     end
     
     def show
@@ -16,16 +15,14 @@ class TasksController < ApplicationController
     end
     
     def create
-        # @task = Task.new(task_params)
-        @task = current_user.tasks.build(task_params)
+        @task = Task.new(task_params)
         
         if @task.save
             flash[:success] = 'taskが正常に追加されました'
             redirect_to root_url
         else
-            @tasks = current_user.tasks.order(id: :desc).page(params[:page])
             flash.now[:danger] = 'taskが追加されませんでした'
-            render 'tasks/index'
+            render :new
         end
     end
     
@@ -65,7 +62,7 @@ class TasksController < ApplicationController
     def correct_user
         @task = current_user.tasks.find_by(id: params[:id])
         unless @task
-          redirect_to root_url
+          redirect_to login_url
         end
     end
 end

@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  
+ 
   def new
      @user = User.new
   end
@@ -10,7 +10,7 @@ class UsersController < ApplicationController
 
     if @user.save
       flash[:success] = 'ユーザを登録しました。'
-      redirect_to @user
+      redirect_to users_url
     else
       flash.now[:danger] = 'ユーザの登録に失敗しました。'
       render :new
@@ -18,7 +18,11 @@ class UsersController < ApplicationController
   end
 
   private
-
+  
+  def set_current_user
+      @current_user = User.find_by(id: session[:user_id])
+  end
+  
   def user_params
     params.require(:user).permit(:name, :email, :password, :password_confirmation)
   end
